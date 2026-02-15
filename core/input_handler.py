@@ -28,8 +28,7 @@ def download_yt_audio(yt_url: str):
         return filename, info["title"]
 
     except Exception as e:
-        print(f"YouTube download failed: {e}")
-        return None, None
+        return None, str(e)
 
     
 

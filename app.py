@@ -56,7 +56,7 @@ with tab1:
                 audio_path, title = download_yt_audio(url)
 
             if not audio_path:
-                st.error("Failed to download audio from YouTube.")
+                st.error(f"YouTube download failed: {title}")
                 st.stop()
 
             youtube_id = extract_video_id(url)
