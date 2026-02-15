@@ -5,31 +5,34 @@ import re
 
 audio_dir = "storage/audio"
 
-def download_yt_audio(yt_url: str):
+def download_yt_audio(yt_url:str):
     """
-    Downloads audio from YouTube URL.
-    Returns (audio_file_path, video_title)
+    Downloads audio from youtube url and saves as mp3. Returns (audio_file,video_title)
     """
-
     if not os.path.exists(audio_dir):
         os.makedirs(audio_dir)
 
     ydl_op = {
-        "format": "bestaudio",
-        "outtmpl": f"{audio_dir}/%(title)s.%(ext)s",
-        "quiet": True
-    }
+        "format":"bestaudio/best",
+        "outtmpl":f"{audio_dir}/%(title)s.%(ext)s",
+        "postprocessors":[{
+            "key":"FFmpegExtractAudio",
+            "preferredcodec":"mp3"
+        }],
+        "quiet":True
+    }   
 
     try:
         with yt_dlp.YoutubeDL(ydl_op) as ydl:
-            info = ydl.extract_info(yt_url, download=True)
+            info = ydl.extract_info(yt_url,download=True)
             filename = ydl.prepare_filename(info)
+            audio_file = os.path.splitext(filename)[0] + ".mp3"
 
-        return filename, info["title"]
-
+        return audio_file, info["title"]
+    
     except Exception as e:
-        return None, str(e)
-
+        print("Error: ",e)
+        return None, None
     
 
 def extract_video_id(url:str):

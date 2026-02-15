@@ -3,7 +3,7 @@ import re
 import os
 
 from core.input_handler import download_yt_audio, extract_video_id
-#from core.audio_extractor import extract_audio
+from core.audio_extractor import extract_audio
 from core.transcriber import transcribe_audio
 from core.classifier import classify_content
 from core.summarizer import generate_notes
@@ -18,8 +18,6 @@ from utils.helpers import extract_video_id
 create_tables()
 #build_index()
 
-IS_CLOUD = os.getenv("STREAMLIT_SERVER_HEADLESS") == "true"
-
 st.set_page_config(page_title="Deep Dive Notes Tracker", layout="wide")
 
 st.title("Deep Dive Video Notes Tracker")
@@ -28,16 +26,11 @@ tab1, tab2,tab3 = st.tabs(["📥 Process Video", "📂 Saved Notes","🔎 Ask Kn
     
 with tab1:
     st.header("Process New Video / Audio")
-    
-    if IS_CLOUD:
-        input_mode = "Upload Audio/Video File"
-        st.info("YouTube download is disabled in deployed version. Please upload audio file.")
 
-    else:
-        input_mode = st.radio(
-            "Choose Input Type",
-            ["YouTube URL", "Upload Audio/Video File"]
-        )
+    input_mode = st.radio(
+        "Choose Input Type",
+        ["YouTube URL", "Upload Audio/Video File"]
+    )
 
     url = None
     uploaded_file = None
@@ -48,7 +41,7 @@ with tab1:
     elif input_mode == "Upload Audio/Video File":
         uploaded_file = st.file_uploader(
             "Upload Audio or Video",
-            type = ["mp3","wav"]
+            type = ["mp3","mp4","wav"]
         )
 
     if st.button("Generate Notes"):
@@ -61,10 +54,6 @@ with tab1:
 
             with st.spinner("Downloading audio..."):
                 audio_path, title = download_yt_audio(url)
-
-            if not audio_path:
-                st.error(f"YouTube download failed: {title}")
-                st.stop()
 
             youtube_id = extract_video_id(url)
 
@@ -86,8 +75,11 @@ with tab1:
             youtube_id = None
 
             # If video file → extract audio
-            # with st.spinner("Extracting audio..."):
-            audio_path = file_path
+            if file_path.endswith(".mp4"):
+                with st.spinner("Extracting audio..."):
+                    audio_path = extract_audio(file_path)
+            else:
+                audio_path = file_path
 
 
 
