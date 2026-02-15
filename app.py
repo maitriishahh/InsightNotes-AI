@@ -29,14 +29,14 @@ with tab1:
 
     input_mode = st.radio(
         "Choose Input Type",
-        ["Youtube URL", "Upload Audio/Video File"]
+        ["YouTube URL", "Upload Audio/Video File"]
     )
 
     url = None
     uploaded_file = None
 
-    if input_mode == "Youtube URL":
-        url = st.text_input("Enter Youtube URL")
+    if input_mode == "YouTube URL":
+        url = st.text_input("Enter YouTube URL")
 
     elif input_mode == "Upload Audio/Video File":
         uploaded_file = st.file_uploader(
