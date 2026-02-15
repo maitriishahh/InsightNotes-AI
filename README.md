@@ -8,7 +8,7 @@ InsightNotes AI is an end-to-end **GenAI + Retrieval-Augmented Generation (RAG)*
 ## 🚀 Features
 
 ### 📥 Multi-Source Input
-- YouTube URL processing  
+- YouTube URL processing *(Cloud deployments may restrict direct media downloads due to network policies.)*
 - Local audio/video upload (`.mp3`, `.mp4`, `.wav`)  
 - Automatic audio extraction for video files  
 
