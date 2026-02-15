@@ -55,6 +55,10 @@ with tab1:
             with st.spinner("Downloading audio..."):
                 audio_path, title = download_yt_audio(url)
 
+            if not audio_path:
+                st.error("Failed to download audio from YouTube.")
+                st.stop()
+
             youtube_id = extract_video_id(url)
 
 

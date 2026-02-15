@@ -1,8 +1,6 @@
 streamlit
 yt-dlp
-openai-whisper
 python-dotenv
-torch
 faster-whisper
 faiss-cpu
 groq
