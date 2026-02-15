@@ -3,7 +3,7 @@ import re
 import os
 
 from core.input_handler import download_yt_audio, extract_video_id
-from core.audio_extractor import extract_audio
+#from core.audio_extractor import extract_audio
 from core.transcriber import transcribe_audio
 from core.classifier import classify_content
 from core.summarizer import generate_notes
@@ -48,7 +48,7 @@ with tab1:
     elif input_mode == "Upload Audio/Video File":
         uploaded_file = st.file_uploader(
             "Upload Audio or Video",
-            type = ["mp3","mp4","wav"]
+            type = ["mp3","wav"]
         )
 
     if st.button("Generate Notes"):
@@ -86,11 +86,8 @@ with tab1:
             youtube_id = None
 
             # If video file → extract audio
-            if file_path.endswith(".mp4"):
-                with st.spinner("Extracting audio..."):
-                    audio_path = extract_audio(file_path)
-            else:
-                audio_path = file_path
+            # with st.spinner("Extracting audio..."):
+            audio_path = file_path
 
 
 
