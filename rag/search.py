@@ -70,7 +70,7 @@ def query_index(question: str, top_k: int = 6):
     distances, results = vector_store.search(question_embedding, top_k=top_k)
 
     if not results:
-        return "No relevant information found in the knowledge base."
+        return "No relevant information found in the knowledge base.",[]
 
     # ---------------------------
     # Relevance Threshold Filtering
