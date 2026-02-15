@@ -18,6 +18,8 @@ from utils.helpers import extract_video_id
 create_tables()
 #build_index()
 
+IS_CLOUD = os.getenv("STREAMLIT_SERVER_HEADLESS") == "true"
+
 st.set_page_config(page_title="Deep Dive Notes Tracker", layout="wide")
 
 st.title("Deep Dive Video Notes Tracker")
@@ -26,11 +28,16 @@ tab1, tab2,tab3 = st.tabs(["📥 Process Video", "📂 Saved Notes","🔎 Ask Kn
     
 with tab1:
     st.header("Process New Video / Audio")
+    
+    if IS_CLOUD:
+        input_mode = "Upload Audio/Video File"
+        st.info("YouTube download is disabled in deployed version. Please upload audio file.")
 
-    input_mode = st.radio(
-        "Choose Input Type",
-        ["YouTube URL", "Upload Audio/Video File"]
-    )
+    else:
+        input_mode = st.radio(
+            "Choose Input Type",
+            ["YouTube URL", "Upload Audio/Video File"]
+        )
 
     url = None
     uploaded_file = None
