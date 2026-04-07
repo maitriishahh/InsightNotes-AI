@@ -18,9 +18,9 @@ from utils.helpers import extract_video_id
 create_tables()
 #build_index()
 
-st.set_page_config(page_title="Deep Dive Notes Tracker", layout="wide")
+st.set_page_config(page_title="AI YouTube Video Summarizer", layout="wide")
 
-st.title("Deep Dive Video Notes Tracker")
+st.title("AI YouTube Video Summarizer")
 
 tab1, tab2,tab3 = st.tabs(["📥 Process Video", "📂 Saved Notes","🔎 Ask Knowledge Base"])
     

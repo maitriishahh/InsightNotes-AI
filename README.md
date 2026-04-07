@@ -1,7 +1,7 @@
-# 🎥 InsightNotes AI  
+# 🎥 AI YouTube Video Summarizer 
 ### AI-Powered YouTube & Audio Knowledge Extraction System  
 
-InsightNotes AI is an end-to-end **GenAI + Retrieval-Augmented Generation (RAG)** application that converts long-form YouTube videos and audio files into structured notes and enables cross-video knowledge querying with grounded, hallucination-resistant answers.
+AI YouTube Video Summarizer is an end-to-end **GenAI + Retrieval-Augmented Generation (RAG)** application that converts long-form YouTube videos and audio files into structured notes and enables cross-video knowledge querying with grounded, hallucination-resistant answers.
 
 
 
@@ -10,7 +10,7 @@ InsightNotes AI is an end-to-end **GenAI + Retrieval-Augmented Generation (RAG)*
 ### 📥 Multi-Source Input
 - YouTube URL processing *(Cloud deployments may restrict direct media downloads due to network policies.)*
 - Local audio/video upload (`.mp3`, `.mp4`, `.wav`)  
-- Automatic audio extraction for video files  
+- Automatic audio extraction for video files
 
 
 
@@ -89,7 +89,7 @@ User Input (YouTube URL / File Upload)
 ## 📁 Project Structure
 
 ```
-InsightNotes-AI/
+AI YouTube Video Summarizer/
 │
 ├── core/
 │   ├── transcriber.py
@@ -128,8 +128,8 @@ InsightNotes-AI/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/maitriishahh/InsightNotes-AI.git
-cd InsightNotes-AI
+git https://github.com/maitriishahh/AI-YouTube-Video-Summarizer.git
+cd AI YouTube Video Summarizer
 ```
 
 ### 2. Create a virtual environment
