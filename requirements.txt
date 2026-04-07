@@ -7,3 +7,6 @@ groq
 sentence-transformers
 reportlab
 numpy
+torch
+torchvision
+transformers
